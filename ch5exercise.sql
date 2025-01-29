@@ -3,15 +3,15 @@
 select*
 from summer_games;
 
-(select athlete_id, name
-from summer_games
-left join athletes
-on summer_games.athlete_id = athletes.id)
+select athlete_id, name, 'Summer' as season
+from athletes
+inner join summer_games
+on athletes.id = summer_games.athlete_id
 union
-(select athlete_id, name
-from winter_games
-left join athletes
-on winter_games.athlete_id = athletes.id);
+select athlete_id, name, 'Winter' as season
+from athletes
+inner join winter_games
+on athletes.id = winter_games.athlete_id;
 
 
 -- Find Countries Participating in Both Games
